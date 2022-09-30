@@ -1,4 +1,17 @@
-Reto Tecnico TypeScript - nodejs - AWS
+<br />
+<div align="center">
+  <a href="https://github.com/javiladeveloper/culquiReto">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
+
+  <h3 align="center">Reto Tecnico TypeScript - nodejs - AWS</h3>
+
+  <p align="center">
+    An awesome README template to jumpstart your projects!
+    <br />
+  </p>
+</div>
+
 
 <!-- GETTING STARTED -->
 ## Requerimientos de uso
