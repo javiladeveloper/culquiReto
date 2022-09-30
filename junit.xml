@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="7" failures="0" errors="0" time="6.469">
+  <testsuite name="credit card" errors="0" failures="0" skipped="0" timestamp="2022-09-29T23:39:45" time="6.312" tests="7">
+    <testcase classname="credit card testing lambda: createCreditCard - empty request.body" name="credit card testing lambda: createCreditCard - empty request.body" time="0.036">
+    </testcase>
+    <testcase classname="credit card testing lambda: findCreditCard - empty request.body" name="credit card testing lambda: findCreditCard - empty request.body" time="0.005">
+    </testcase>
+    <testcase classname="credit card testing lambda: createCreditCard &amp;&amp; findCreditCard - ok" name="credit card testing lambda: createCreditCard &amp;&amp; findCreditCard - ok" time="2.033">
+    </testcase>
+    <testcase classname="credit card testing lambda: createCreditCard - error email &amp;&amp; credit card lenght" name="credit card testing lambda: createCreditCard - error email &amp;&amp; credit card lenght" time="0.005">
+    </testcase>
+    <testcase classname="credit card testing lambda: createCreditCard - error yearn and month" name="credit card testing lambda: createCreditCard - error yearn and month" time="0.005">
+    </testcase>
+    <testcase classname="credit card testing lambda: findCreditCard - no credit card exist" name="credit card testing lambda: findCreditCard - no credit card exist" time="0.126">
+    </testcase>
+    <testcase classname="credit card testing lambda: findCreditCard - token expired" name="credit card testing lambda: findCreditCard - token expired" time="0.386">
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,62 @@
+{
+  "name": "retoculqui",
+  "version": "1.0.0",
+  "description": "Project culqui",
+  "main": "index.js",
+  "scripts": {
+    "dev": "serverless offline",
+    "deploy": "serverless deploy",
+    "lint": "npx eslint ./src",
+    "lint:fixprettier": "npx eslint ./src --fix",
+    "test": "jest --ci --coverage --detectOpenHandles"
+  },
+  "author": "<jonathan.joan.avila@gmail.com>",
+  "license": "UNLICENSED",
+  "workspaces": [
+    "libs/*",
+    "src/*"
+  ],
+  "config": {
+    "mongodbMemoryServer": {
+      "downloadDir": "/path/to/DownloadDir"
+    }
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.64",
+    "@types/dotenv-safe": "^8.1.2",
+    "@types/jest": "^27.0.2",
+    "@types/mockingoose": "^2.13.0",
+    "@types/mongodb": "^4.0.7",
+    "@types/node": "^14.14.10",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-output": "^2.0.3",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-prettier": "^3.2.0",
+    "eslint-plugin-security-node": "^1.0.14",
+    "generate-password": "^1.7.0",
+    "jest": "^26.6.3",
+    "jest-html-reporter": "^3.3.0",
+    "jest-junit": "^12.0.0",
+    "jest-sonar-reporter": "^2.0.0",
+    "mockingoose": "^2.15.2",
+    "mongodb-memory-server": "^8.9.3",
+    "prettier": "^2.2.1",
+    "serverless": "^3.22.0",
+    "serverless-offline": "^6.8.0",
+    "serverless-plugin-typescript": "^2.1.2",
+    "ts-jest": "^26.4.4",
+    "ts-json-schema-generator": "^0.80.0",
+    "ts-loader": "^8.0.11",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "luhn": "^2.4.1",
+    "mongoose": "^5.13.8",
+    "rand-token": "^1.0.1"
+  }
+}
