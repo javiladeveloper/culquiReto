@@ -23,23 +23,26 @@ Node
 https://nodejs.org/en/download/
 ```
 ### Installation
-
-1. Credenciales de AWS IAM para poder hacer deploy
+1. Clone the repo
+   ```sh
+   git clone git@github.com:javiladeveloper/culquiReto.git
+   ```
+2. Credenciales de AWS IAM para poder hacer deploy
 
   - Instrucciones de uso
       En la terminal colocar `aws configure` seguidamente colocar sus credenciales proporcionadas por AWS para el despliegue en su cuenta
 
-2. Instalamos dependencias para ejecutar en entorno local
+3. Instalamos dependencias para ejecutar en entorno local
     npm install
 
-3. Iniciamos el proyecto
+4. Iniciamos el proyecto
     - npm run dev
         Esto nos iniciara el proyecto con serverless offline, donde se expondra los servicios en la consola para ser consumidos
         ejemplo de request
         `https://documenter.getpostman.com/view/12046942/2s83mjEg7y`
 
-4. Pruebas unitarias
+5. Pruebas unitarias
     npm run test
 
-5. Despliegue AWS
+6. Despliegue AWS
     npm run deploy
