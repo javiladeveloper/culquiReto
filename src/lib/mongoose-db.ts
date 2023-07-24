@@ -1,11 +1,21 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import mongoose from 'mongoose';
 import { Logger } from '../../libs/Logger';
+import { MongoMemoryServer } from 'mongodb-memory-server';
 const log = new Logger('getConexion');
+let mongod;
 
 export const connectDB = async () => {
   try {
-    const dbUrl = process.env.DB_CONN_STRING || '';
+    let dbUrl = `mongodb+srv://${process.env.DB_USER || ''}:${process.env.DB_PASS || ''}@cluster0.${
+      process.env.DB_CLUSTER || ''
+    }.mongodb.net/${process.env.DB_DBNAME || ''}`;
+    if (process.env.NODE_ENV === 'test') {
+      mongod = await MongoMemoryServer.create();
+      dbUrl = mongod.getUri();
+    }
     const conn = await mongoose.connect(dbUrl, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -19,15 +29,13 @@ export const connectDB = async () => {
   }
 };
 
-// export const disconnectDB = async () => {
-//   try {
-//     await mongoose.connection.close();
-//     if (mongod) {
-//       await mongod.stop();
-//     }
-//   } catch (err) {
-//     log.error(err);
-//     throw err;
-//     // process.exit(1);
-//   }
-// };
+export const disconnectDB = async () => {
+  try {
+    await mongoose.connection.close();
+    if (mongod) {
+      await mongod.stop();
+    }
+  } catch (err) {
+    process.exit(1);
+  }
+};

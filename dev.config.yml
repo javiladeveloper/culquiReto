@@ -1,1 +1,5 @@
-DB_CONN_STRING: "mongodb+srv://culqui:culqui123@cluster0.gxdbz7n.mongodb.net/test"
+DB_USER: 'culqui'
+DB_PASS: 'culqui123'
+DB_DBNAME: 'culqui-challengue'
+DB_CLUSTER: 'gxdbz7n'
+AUTORIZATION: 'pk_test_LsRBKejzCOEEWOsw'
