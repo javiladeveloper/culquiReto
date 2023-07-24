@@ -37,7 +37,6 @@ export class CreditCardImpl {
       const error = err as { message: string };
       this.log.error(err);
       throw new BadRequestError('CREDIT CARD', error.message);
-      // return MessageUtil.error(error.message);
     }
   }
 }

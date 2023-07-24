@@ -3,21 +3,20 @@ import { CreditCards } from '../domain/CreditCardRepository';
 import creditCard from '../models/CreditCard.model';
 import { NotFoundError } from '../../libs/errors';
 import { Logger } from '../../libs/Logger';
+// eslint-disable-next-line no-duplicate-imports
+import { BadRequestError } from '../../libs/errors';
 const log = new Logger('handler');
 export class CreditcardrepositoryImpl {
-  /**
-   * Create User
-   * @param params
-   */
   public async createCreditCard(params: CreditCards): Promise<CreditCards> {
-    const response = await creditCard.create(params);
-    return response;
+    try {
+      const response = await creditCard.create(params);
+      return response;
+    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      throw new BadRequestError('CREDIT CARD', error._message);
+    }
   }
 
-  /**
-   * Query user by id
-   * @param token
-   */
   public async findOneCreditCardByToken(token: string): Promise<CreditCards> {
     const response = await creditCard.findOne(
       { token: token },

@@ -6,8 +6,6 @@ custom:
       uat: DEBUG
       qas: INFO
       prd: INFO
-  # authorizer:
-  #   arn: arn:aws:lambda:#{AWS::Region}:#{AWS::AccountId}:function:identity-api-${self:provider.stage}-authorizator
 plugins:
   - serverless-offline
   - serverless-plugin-typescript
@@ -18,7 +16,11 @@ provider:
   region: us-east-1
   apiName: ${opt:stage, self:provider.stage}
   environment:
-    DB_CONN_STRING: ${file(${opt:stage, self:provider.stage}.config.yml):DB_CONN_STRING}
+    DB_USER: ${file(${opt:stage, self:provider.stage}.config.yml):DB_USER}
+    DB_PASS: ${file(${opt:stage, self:provider.stage}.config.yml):DB_PASS}
+    DB_DBNAME: ${file(${opt:stage, self:provider.stage}.config.yml):DB_DBNAME}
+    DB_CLUSTER: ${file(${opt:stage, self:provider.stage}.config.yml):DB_CLUSTER}
+    AUTORIZATION: ${file(${opt:stage, self:provider.stage}.config.yml):AUTORIZATION}
 package:
   exclude:
     - .build
@@ -42,7 +44,3 @@ functions:
       - http:
           path: /creditCard/{token}
           method: get
-          # authorizer:
-          #   arn: '${self:custom.authorizer.arn}'
-          #   identitySource: method.request.header.TOKEN
-          #   type: request

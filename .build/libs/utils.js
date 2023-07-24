@@ -1,16 +1,17 @@
-import { APIGatewayProxyEvent } from 'aws-lambda';
-import { UnauthorizedError } from './errors';
-import { IdToken } from './IdToken';
-import { Logger } from './Logger';
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getToken = exports.isBlank = void 0;
+const errors_1 = require("./errors");
+const IdToken_1 = require("./IdToken");
+const Logger_1 = require("./Logger");
 /**
  * Retorna true si la variable que se le pasa no esta definida, es una cadena vacia, o tiene puros espacios.
  * @param str
  */
-export function isBlank(str: string | undefined | null): boolean {
-  return !str || str.length === 0 || str.trim().length === 0;
+function isBlank(str) {
+    return !str || str.length === 0 || str.trim().length === 0;
 }
-
+exports.isBlank = isBlank;
 /**
  * # Obtener Token
  *
@@ -77,14 +78,16 @@ export function isBlank(str: string | undefined | null): boolean {
  *
  * @param event es un event del tipo APIGatewayProxyEvent, que contiene los headers.
  */
-export function getToken(event: APIGatewayProxyEvent): IdToken {
-  const idtoken = event.headers['TOKEN'] ?? '';
-  if (!idtoken) {
-    throw new UnauthorizedError('UNAUTHORIZED', 'invalid token');
-  }
-
-  const token = !isBlank(idtoken) ? idtoken : '';
-  const idToken = new IdToken(token);
-  Logger.debug('idToken', idToken);
-  return idToken;
+function getToken(event) {
+    var _a;
+    const idtoken = (_a = event.headers.Authorization['TOKEN']) !== null && _a !== void 0 ? _a : '';
+    if (!idtoken) {
+        throw new errors_1.UnauthorizedError('UNAUTHORIZED', 'invalid token');
+    }
+    const token = !isBlank(idtoken) ? idtoken : '';
+    const idToken = new IdToken_1.IdToken(token);
+    Logger_1.Logger.debug('idToken', idToken);
+    return idToken;
 }
+exports.getToken = getToken;
+//# sourceMappingURL=utils.js.map

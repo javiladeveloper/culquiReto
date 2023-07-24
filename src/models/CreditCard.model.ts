@@ -91,4 +91,3 @@ const creditCardSchema = new mongoose.Schema(
 );
 const creditCard = mongoose.model<CreditCard>('credit_card', creditCardSchema, 'credit_card');
 export default creditCard;
-// export const creditCardModel = model<CreditCard>('credit_card', creditCardSchema, 'credit_card');
